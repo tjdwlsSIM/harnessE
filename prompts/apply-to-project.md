@@ -1,58 +1,45 @@
 
 ---
 
-## 5. `prompts/apply-to-project.md`에 넣을 프롬프트
-
-이 파일이 실제로 가장 자주 쓰일 거야.
+# 14. `prompts/apply-to-project.md`
 
 ```md
-# Apply harnessE to a Project
+# Apply harnessE to Project
 
-Use this prompt when applying the harnessE structure to an existing project.
+Use this prompt when applying harnessE to an existing project.
 
 ## Prompt
 
-You are working inside an existing software project.
-
-Apply the harness engineering structure from the `harnessE` repository.
+Apply the harnessE structure to this project.
 
 Before editing:
 
-1. Read `AGENTS.md`.
-2. Inspect the current project folder structure.
-3. Identify the frontend, backend, routes, components, services, and config files.
-4. Do not modify existing feature code unless necessary.
+1. Read `AGENTS.md` if it exists.
+2. Inspect the current project structure.
+3. Identify the framework and main folders.
+4. Do not modify existing feature code.
 
 Your task:
 
 1. Create or update `AGENTS.md`.
-2. Create a `docs/` folder if it does not exist.
-3. Add:
-   - `docs/project-context.md`
-   - `docs/architecture.md`
-   - `docs/coding-convention.md`
-   - `docs/checklist.md`
-   - `docs/workflow.md`
-4. Create a `rules/` folder if it does not exist.
-5. Add:
-   - `rules/frontend-rules.md`
-   - `rules/backend-rules.md`
-   - `rules/git-rules.md`
-   - `rules/ai-agent-rules.md`
-6. Create a `tasks/task-template.md` file.
-7. Summarize the current project structure in `docs/architecture.md`.
-8. Write future AI instructions in `AGENTS.md`.
+2. Create a `docs/` folder.
+3. Create a `rules/` folder.
+4. Create a `tasks/` folder.
+5. Add project-specific documentation.
+6. Summarize the current architecture.
+7. Add AI agent rules for future development.
 
-Constraints:
+Required files:
 
-- Do not change unrelated source code.
-- Do not delete existing files.
-- Do not rename existing folders unless explicitly requested.
-- Keep the structure compatible with Codex, Claude Code, Cursor, and Copilot.
-
-After finishing, provide:
-
-- Summary
-- Created files
-- Modified files
-- How to use this harness in future AI sessions
+```txt
+AGENTS.md
+docs/project-context.md
+docs/architecture.md
+docs/coding-convention.md
+docs/checklist.md
+docs/workflow.md
+rules/ai-agent-rules.md
+rules/frontend-rules.md
+rules/backend-rules.md
+rules/git-rules.md
+tasks/task-template.md
