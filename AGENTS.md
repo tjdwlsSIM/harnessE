@@ -286,3 +286,158 @@ Detailed rules are defined in:
 - `rules/git-rules.md`
 
 AI agents must follow these documents when working on this project.
+
+---
+
+## Codex Slash-Style Commands
+
+This project uses slash-style command templates for Codex.
+
+These commands are not dependent on a specific AI vendor feature.  
+If the user starts a request with one of the commands below, Codex must interpret it as an instruction to read the matching file in `commands/`.
+
+## Available Commands
+
+```txt
+/apply-harness
+/feature
+/refactor
+/review
+/fix
+/gpush
+```
+
+## Command Mapping
+
+When the user types:
+
+```txt
+/apply-harness
+```
+
+Codex must read and follow:
+
+```txt
+commands/apply-harness.md
+```
+
+When the user types:
+
+```txt
+/feature [request]
+```
+
+Codex must read and follow:
+
+```txt
+commands/feature.md
+```
+
+The text after `/feature` is the feature request.
+
+When the user types:
+
+```txt
+/refactor [request]
+```
+
+Codex must read and follow:
+
+```txt
+commands/refactor.md
+```
+
+The text after `/refactor` is the refactor request.
+
+When the user types:
+
+```txt
+/review [target]
+```
+
+Codex must read and follow:
+
+```txt
+commands/review.md
+```
+
+The text after `/review` is the review target.
+
+When the user types:
+
+```txt
+/fix [bug description]
+```
+
+Codex must read and follow:
+
+```txt
+commands/fix.md
+```
+
+The text after `/fix` is the bug description.
+
+## Codex Command Rule
+
+Codex must treat slash-style commands as shortcuts for longer prompts.
+
+Example:
+
+```txt
+/feature 사진 업로드 후 미리보기 기능을 추가해줘
+```
+
+Means:
+
+```txt
+Read commands/feature.md.
+Use "사진 업로드 후 미리보기 기능을 추가해줘" as the feature request.
+Follow the harnessE standard.
+```
+
+## If Slash Commands Are Not Recognized
+
+If the Codex environment does not support custom slash commands directly, the user can write:
+
+```txt
+commands/feature.md 기준으로 작업해줘.
+
+요청:
+사진 업로드 후 미리보기 기능을 추가해줘.
+```
+
+Codex must treat this the same as:
+
+```txt
+/feature 사진 업로드 후 미리보기 기능을 추가해줘
+```
+
+
+그리고 아래 내용도 추가해.
+
+````md
+## Git Push Command
+
+When the user types:
+
+```txt
+/gpush [commit message]
+
+Codex must read and follow:
+commands/gpush.md
+
+The text after /gpush is the commit message.
+
+Example:
+/gpush docs: update harnessE guide
+
+Means:
+git status --short
+git add .
+git status --short
+git commit -m "docs: update harnessE guide"
+git push
+
+Using /gpush is explicit permission to run the Git add, commit, and push flow.
+
+However, Codex must stop before committing if sensitive files such as .env, .env.local, or node_modules/ are staged.

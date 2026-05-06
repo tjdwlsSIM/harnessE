@@ -422,3 +422,43 @@ human reviewability > automatic completion
 ## License
 
 This repository is intended to be reused as a personal or team AI development standard.
+
+## Slash Command Templates
+
+harnessE provides reusable slash-command-style prompt templates.
+
+Common commands:
+
+```txt
+/apply-harness
+/feature
+/refactor
+/review
+/fix
+/gpush
+
+## Codex Slash-Style Commands
+
+harnessE is designed for Codex usage.
+
+The `commands/` folder contains slash-style command templates.
+
+Available commands:
+
+```txt
+/apply-harness
+/feature
+/refactor
+/review
+/fix
+/gpush
+
+
+---
+
+## 11. Git 업로드
+
+```bash
+git add AGENTS.md README.md commands
+git commit -m "docs: add codex command templates"
+git push origin main
